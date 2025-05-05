@@ -12,17 +12,17 @@ var configuration = builder.Build();
 string sbConnectionString = configuration["ServiceBusConnectionString"];
 Console.WriteLine($"Sb ConnectionString: {sbConnectionString}");
 
-string queueName1 = configuration["queueName1"];
-Console.WriteLine($"queueName1: {queueName1}");
+string queueName = configuration["queueName2"];
+Console.WriteLine($"queueName1: {queueName}");
 
-if(sbConnectionString is  null || queueName1 is null)
+if(sbConnectionString is  null || queueName is null)
 {
     Console.WriteLine("Error de configuración!");
     Console.ReadKey();
 }
 
 Console.WriteLine("Inicio exportacion de mensajes de la cola!");
-await ServiceBusExportMessage(sbConnectionString, queueName1);
+await ServiceBusExportMessage(sbConnectionString, queueName);
 Console.WriteLine("Terminacion exportacion de mensajes de la cola!");
 
 Console.ReadKey();
